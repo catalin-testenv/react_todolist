@@ -37,8 +37,8 @@
     ]
   },
   "scripts": {
-    "build:libs:dev": "browserify -r react -r react-dom -r prop-types -o dist/vendor.js",
-    "build:app:dev": "NODE_PATH=./src browserify -x react -x react-dom -x prop-types -o dist/bundle.js src/app.js",
+    "build:libs:dev": "browserify -r react -r react-dom -r prop-types -r react-redux -r redux -o dist/vendor.js",
+    "build:app:dev": "NODE_PATH=./src browserify -x react -x react-dom -x prop-types -x react-redux -x redux -o dist/bundle.js src/app.js",
     "serve": "node node_modules/http-server/bin/http-server -a 0.0.0.0 -p 8001 -c-1"
   }
 }

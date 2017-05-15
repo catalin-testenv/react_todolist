@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect, Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import {thunk} from 'middleware';
 import appReducers from 'reducers';
 import * as actions from 'actions';
@@ -10,7 +10,9 @@ import {TodoService} from 'services';
 
 import PropTypes from 'prop-types';
 
-const store = createStore(appReducers, {todos: TodoService.todos}, applyMiddleware(thunk));
+const reduxDevTools = global.window.__REDUX_DEVTOOLS_EXTENSION__ || (() => (f) => f);
+
+const store = createStore(appReducers, {todos: TodoService.todos}, compose(applyMiddleware(thunk), reduxDevTools()));
 
 class TodoApp extends React.Component {
 
